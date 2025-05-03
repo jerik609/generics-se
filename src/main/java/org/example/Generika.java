@@ -7,7 +7,20 @@ package org.example;
 
 // https://madbean.com/2004/mb2004-3/
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Generika<T> {
+
+    List<T> dataList = new ArrayList<>();
+
+    public void putItems(List<? extends T> items) {
+        dataList.addAll(items);
+    }
+
+    public List<? super T> getItems() {
+        return dataList;
+    }
 
     private final T data;
 
