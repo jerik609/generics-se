@@ -12,7 +12,7 @@ public class Invariance {
         // =========================
 
         List<Integer> integers = new ArrayList<>();
-        List<? extends Integer> ofExtendsInteger = integers;
+        List<? extends Integer> ofExtendsInteger = integers; // inside are instances of a child of Integer, but we don't know which exactly - we can get Integer out of the List, but can't put anything inside
 
         // compiler does not know what exactly is in the list, so I'm prevented from
         // adding anything - since all must we one type and compiler would not be able to
@@ -28,13 +28,14 @@ public class Invariance {
         // =========================
 
         List<Number> numbers = new ArrayList<>();
-        List<? super Number> ofSuperNumbers = numbers;
+        List<? super Number> ofSuperNumbers = numbers; // inside are instances of a parent of Number, but we don't know exactly which parent, thus we can't really get anything specific out (save for Object), but we can put any child of Number inside
 
         // compiler does not know how to cast the contents, really anything can be inside
         // not just Number
         // I can only get objects (which is a super of number)
 
-        Object readNumber = ofSuperNumbers.getFirst(); // DOES NOT COMPILE
+        //Number readNumber = ofSuperNumbers.getFirst(); // DOES NOT COMPILE - we can't tell what exactly is in the List
+        Object readNumber = ofSuperNumbers.getFirst(); // we can get an object out
 
         // but I can put stuff in
         ofSuperNumbers.add(10);
