@@ -40,6 +40,7 @@ public class Invariance {
         // but I can put stuff in
         ofSuperNumbers.add(10);
         ofSuperNumbers.add(3.14f);
+        // ofSuperNumbers.add("dsdsa"); // can't do string, the parent must be Integer parent
     }
 
     // https://docs.oracle.com/javase/tutorial/java/generics/wildcardGuidelines.html
